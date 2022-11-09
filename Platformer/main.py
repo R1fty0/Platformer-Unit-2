@@ -1,4 +1,4 @@
-# Time left to work on Project: 25h
+# Time left to work on Project: 24h
 
 # Imports
 import pygame
@@ -13,7 +13,7 @@ Width, Height = 800, 600
 # Player Dimensions
 PlayerWidth, PlayerHeight = 144, 194
 # Player Speed
-Speed = 10
+Speed = 20
 
 
 # Scales Images
@@ -22,7 +22,7 @@ def ScaleImages(List, Width, Height):
         pygame.transform.scale(i, (Width, Height))
 
 
-# Walking Animation
+# Walking Forward Images
 WalkForward = [pygame.image.load(os.path.join("venv", "p1_walk01.png")),
                pygame.image.load(os.path.join("venv", "p1_walk02.png")),
                pygame.image.load(os.path.join("venv", "p1_walk03.png")),
@@ -35,7 +35,18 @@ WalkForward = [pygame.image.load(os.path.join("venv", "p1_walk01.png")),
                pygame.image.load(os.path.join("venv", "p1_walk10.png")),
                pygame.image.load(os.path.join("venv", "p1_walk11.png"))]
 
-print("The amount of frames in the Walking Animation loop is " f"{len(WalkForward)}.")
+# Walking Backwards Images
+WalkBackward = []
+
+# Flips the Images of the WalkForward List, and adds them to be used as the images for the WalkBackwards List.
+for i in WalkForward:
+    image = pygame.transform.flip(i, False, True)
+    WalkBackward.append(image)
+
+# Prints the length of both lists.
+print("The length of the WalkBackward List is " f"{len(WalkBackward)} frames.")
+print("The length of the WalkForward List is " f"{len(WalkForward)} frames.")
+
 
 # Background
 Background = pygame.image.load(os.path.join("venv", "background.png"))
@@ -57,10 +68,6 @@ pygame.display.set_caption("Platformer")
 This is a border between the functions and the other pieces of code. Realistically, the code above should be implemented into various data structures.
 
 """
-
-
-
-
 
 # Updates the Visuals on the Screen.
 def Canvas(Player):
