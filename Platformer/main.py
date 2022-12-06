@@ -13,7 +13,7 @@ Width, Height = 800, 600
 # Player Dimensions
 PlayerWidth, PlayerHeight = 144, 194
 # Player Speed
-Speed = 20
+Speed = 1
 
 
 # Scales Images
